@@ -278,27 +278,32 @@
             z-index: 1;
         }
 
-        .seal {
-            position: absolute;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, var(--dorado) 0%, var(--dorado-oscuro) 100%);
-            border-radius: 50%;
-            z-index: 5;
-            box-shadow: 0 5px 15px rgba(184, 135, 11, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: 'Great Vibes';
-            font-size: 22px;
-            transition: 0.5s;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            animation: pulse-seal 2s infinite;
-        }
+     .seal {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, var(--dorado) 0%, var(--dorado-oscuro) 100%);
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: 0 5px 15px rgba(184, 135, 11, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* UNA SOLA TIPOGRAFÍA CURSIVA */
+    font-family: 'Great Vibes', cursive !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+
+    color: white;
+    font-size: 22px;
+    transition: 0.5s;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    animation: pulse-seal 2s infinite;
+}
 
         @keyframes pulse-seal {
 
@@ -509,7 +514,7 @@
             content: "❤";
             position: absolute;
             font-size: 38px;
-            color: #e5b9b9;
+            color: #D4AF37;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -896,8 +901,7 @@
                 Te invitamos a vestir con un estilo fresco, elegante y acorde a nuestra celebración junto al mar.<br>
                 <span
                     style="font-family: 'Montserrat'; font-style: normal; font-size: 12px; letter-spacing: 1px; color: #444;">
-                    <strong>IMPORTANTE:</strong> Nos reservamos los tonos azules y celestes.
-                    Los tonos blancos y perla están reservados exclusivamente para los novios y la corte de honor.
+                    <strong>IMPORTANTE:</strong> Los tonos azules celestes blancos y perla estan reservados exclusivamente para los novios y la corte de honor
                 </span>
             </p>
 
@@ -925,6 +929,14 @@
                         <small
                             style="font-family: 'Montserrat'; font-size: 10px; color: #555; display: block; margin-top: 6px;">
                             Azul claro
+                        </small>
+                    </div>
+                      <div style="text-align: center;">
+                        <span
+                            style="width: 36px; height: 36px; background: #0B1F3A; border-radius: 50%; display: block; margin: auto; border: 1px solid #ccc;"></span>
+                        <small
+                            style="font-family: 'Montserrat'; font-size: 10px; color: #555; display: block; margin-top: 6px;">
+                            Azul marino
                         </small>
                     </div>
 
