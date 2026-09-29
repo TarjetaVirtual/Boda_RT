@@ -16,7 +16,7 @@
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="💌 ¡Estás invitado a nuestra celebración!">
     <meta name="twitter:description" content="Toca aquí para abrir tu sobre.">
@@ -29,6 +29,7 @@
         rel="stylesheet">
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
         :root {
             --dorado: #eec143;
             --dorado-oscuro: #b8860b;
@@ -684,6 +685,18 @@
             color: #aaa;
             letter-spacing: 2px;
         }
+        .hero h1 {
+    font-family: 'Great Vibes', cursive;
+    /* clamp(tamaño_mínimo_móvil, tamaño_adaptable, tamaño_máximo_pc) */
+    font-size: clamp(38px, 9vw, 75px);
+    margin: 5px 0;
+    color: var(--dorado-oscuro);
+    line-height: 1.2;
+    font-weight: normal;
+    /* Suavizado para renderizado en celulares y pantallas HD */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
     </style>
 </head>
 
