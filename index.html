@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rocío & Teddy | Boda </title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cftr28.github.io/invitacionpremium/">
+    <meta property="og:title" content="💌 ¡Estás invitado a nuestra celebración: Boda y Bautizo!">
+    <meta property="og:description"
+        content="Toca aquí para abrir tu sobre y ver los detalles de nuestro Matrimonio y el Bautizo de Enzo.">
+
+    <meta property="og:image" content="https://cftr28.github.io/invitacionpremium/sobre-boda.png">
+    <meta property="og:image:secure_url" content="https://cftr28.github.io/invitacionpremium/sobre-boda.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="💌 ¡Estás invitado a nuestra celebración!">
+    <meta name="twitter:description" content="Toca aquí para abrir tu sobre.">
+    <meta name="twitter:image" content="https://cftr28.github.io/invitacionpremium/sobre-boda.png">
+
+    <link rel="image_src" href="https://cftr28.github.io/invitacionpremium/sobre-boda.png">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --dorado: #eec143;
+            --dorado-oscuro: #b8860b;
+            --texto: #2c2c2c;
+            --texto-suave: #555;
+            --blanco-puro: #ffffff;
+            --borde-sobre: #dcd7cc;
+            --fondo-suave: #f9f7f2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--fondo-suave);
+            color: var(--texto);
+            text-align: center;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.7;
+            width: 100%;
+        }
+
+        /* FIX PARA FONDO EN SAFARI/IOS (Evita distorsión) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('fondo.jpg');
+            background-position: center;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        /* --- FORMATO UNIFICADO DE FRASES --- */
+        .frase-estilo {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(16px, 4vw, 20px);
+            font-style: italic;
+            color: var(--texto-suave);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* --- EFECTO LETRA POR LETRA --- */
+        .letra {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(10px);
+            filter: blur(3px);
+            transition: all 0.4s ease-out;
+        }
+
+        .letra.animada {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* --- ESTILOS DE LA TARJETA PLAYLIST DINÁMICA --- */
+        .playlist-outer-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .playlist-card-premium {
+            background-color: #ffffff;
+            /* Color crema suave de fondo */
+            width: 100%;
+            max-width: 550px;
+            border-radius: 20px;
+            /* Bordes redondeados de la tarjeta */
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            /* Sombra suave para efecto tarjeta */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            /* Para que la animación no se salga */
+        }
+
+        /* --- PASO 1: VISTA INICIAL --- */
+        #playlist-paso1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            opacity: 1;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .icon-music-brown {
+            color: #7d6b59;
+            /* Color café del icono */
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+
+        .btn-sugerir-estilo {
+            background-color: #7d6b59;
+            /* Fondo café */
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            /* Muy redondeado */
+            font-family: 'Playfair Display', serif;
+            /* Tipografía elegante */
+            font-size: 18px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 15px;
+        }
+
+        /* --- PASO 2: FORMULARIO (OCULTO) --- */
+        #playlist-paso2 {
+            display: none;
+            /* Se oculta inicialmente */
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+            /* Delay para que paso 1 se vaya primero */
+        }
+
+        .icon-notes-pink {
+            color: #e6b3b3;
+            /* Color rosado suave de las notas */
+            font-size: 50px;
+        }
+
+        .input-playlist-premium {
+            width: 100%;
+            padding: 18px 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 50px;
+            /* inputs redondeados */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            outline: none;
+            background-color: white;
+        }
+
+        .input-playlist-premium:focus {
+            border-color: #7d6b59;
+            /* Cambia a café al enfocar */
+        }
+
+        .btn-enviar-premium {
+            background-color: #4f4b46;
+            /* Fondo café oscuro casi gris */
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Montserrat';
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            align-self: flex-end;
+            /* Lo alinea a la derecha como en la imagen */
+        }
+
+        /* --- ESTADOS DE ANIMACIÓN --- */
+        .playlist-card-premium.show-form #playlist-paso1 {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+            /* Evita clics mientras desaparece */
+        }
+
+        .playlist-card-premium.show-form #playlist-paso2 {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+
+        /* --- DESTELLOS DE ORO --- */
+        .sparkle {
+            position: fixed;
+            background: var(--dorado);
+            border-radius: 20% 50% 30% 60%;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 10px var(--dorado), 0 0 20px #ffffff, 0 0 30px var(--dorado-oscuro);
+        }
+
+        /* --- SOBRE (OPTIMIZADO PARA TODO CELULAR) --- */
+        #sobre-contenedor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            /* Altura dinámica para Safari */
+            background: #f1ede4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5000;
+            transition: transform 1.5s cubic-bezier(0.8, 0, 0.2, 1), opacity 1s;
+        }
+
+        .envelope {
+            position: relative;
+            width: 90%;
+            max-width: 450px;
+            height: 300px;
+            background: #ffffff;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            perspective: 1500px;
+            /* Aumentado para mejor efecto en iOS */
+            border-radius: 4px;
+        }
+
+        .envelope .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f4f3f1;
+            clip-path: polygon(0 0, 100% 0, 50% 60%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 50% 60%);
+            z-index: 4;
+            transform-origin: top;
+            transition: transform 0.8s ease-in-out;
+            border: 1px solid var(--borde-sobre);
+        }
+
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .seal {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, var(--dorado) 0%, var(--dorado-oscuro) 100%);
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: 0 5px 15px rgba(184, 135, 11, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Great Vibes';
+            font-size: 22px;
+            transition: 0.5s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            animation: pulse-seal 2s infinite;
+        }
+
+        @keyframes pulse-seal {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        .envelope.open .seal {
+            opacity: 0;
+            transform: translate(-50%, -100%) scale(0);
+            pointer-events: none;
+        }
+
+        #texto-sobre-contenedor {
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display';
+            color: var(--dorado-oscuro);
+            z-index: 3;
+            padding: 0 20px;
+        }
+
+        .texto-abrir {
+            font-size: 11px;
+            margin-top: 15px;
+            letter-spacing: 4px;
+            color: var(--dorado-oscuro);
+            font-weight: 600;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* --- HERO --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Great Vibes';
+            font-size: clamp(35px, 10vw, 70px);
+            margin: 5px 0;
+            color: var(--dorado-oscuro);
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #666;
+            font-weight: 600;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 2;
+        }
+
+        .hero .main-event {
+            font-family: 'Playfair Display';
+            font-size: 16px;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            padding: 15px 20px;
+            border-top: 1px solid var(--dorado);
+            border-bottom: 1px solid var(--dorado);
+            display: inline-block;
+            color: #444;
+        }
+
+        /* --- CONTENEDORES --- */
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            padding: 60px 20px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-family: 'Playfair Display';
+            font-size: clamp(30px, 7vw, 42px);
+            color: var(--dorado-oscuro);
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            padding: 40px 20px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        /* --- COUNTDOWN --- */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            overflow-x: hidden;
+        }
+
+        .countdown div {
+            background: var(--blanco-puro);
+            flex: 1;
+            min-width: 70px;
+            padding: 15px 5px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .countdown span {
+            font-size: 24px;
+            font-family: 'Playfair Display';
+            color: var(--dorado-oscuro);
+            display: block;
+            font-weight: 700;
+        }
+
+        /* --- CALENDARIO --- */
+        .calendar-box {
+            max-width: 320px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .calendar-grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .calendar-grid span {
+            width: 14.28%;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            position: relative;
+        }
+
+        .calendar-grid .header-day {
+            font-weight: 600;
+            color: var(--dorado-oscuro);
+            margin-bottom: 10px;
+        }
+
+        .corazon-dia {
+            color: white !important;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .corazon-dia::after {
+            content: "❤";
+            position: absolute;
+            font-size: 38px;
+            color: #e5b9b9;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        /* --- BOTONES --- */
+        .btn {
+            background: linear-gradient(135deg, var(--dorado) 0%, var(--dorado-oscuro) 100%);
+            color: white !important;
+            border: none;
+            padding: 16px 35px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Montserrat';
+            font-weight: 600;
+            transition: 0.4s;
+            margin-top: 15px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            letter-spacing: 2px;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            max-width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- TIMELINE --- */
+        .timeline {
+            text-align: left;
+            max-width: 320px;
+            margin: auto;
+        }
+
+        .timeline div {
+            border-left: 2px solid var(--dorado);
+            padding: 0 0 30px 25px;
+            position: relative;
+            font-size: 15px;
+            color: #555;
+            font-family: 'Montserrat';
+        }
+
+        .timeline div::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--dorado);
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .timeline b {
+            color: var(--dorado-oscuro);
+            margin-right: 10px;
+            font-family: 'Playfair Display';
+            font-size: 17px;
+        }
+
+        .foto-pareja {
+            width: 180px;
+            height: 180px;
+            margin: 40px auto;
+            border-radius: 50%;
+            border: 8px solid white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            background: url('mifoto.jpg') center/cover;
+        }
+
+        .music-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dorado);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            z-index: 4000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .music-playing {
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .petalo {
+            position: fixed;
+            top: -50px;
+            pointer-events: none;
+            animation: caer linear forwards;
+            z-index: 1000;
+            font-size: 24px;
+        }
+
+        @keyframes caer {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--dorado-oscuro);
+            animation: indicbounce 2s infinite;
+        }
+
+        @keyframes indicbounce {
+
+            0%,
+            100% {
+                transform: translate(-50%, 0);
+            }
+
+            50% {
+                transform: translate(-50%, -10px);
+            }
+        }
+
+        .arrow-down {
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid var(--dorado-oscuro);
+            border-bottom: 2px solid var(--dorado-oscuro);
+            transform: rotate(45deg);
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px 20px;
+            font-size: 10px;
+            color: #aaa;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="sobre-contenedor">
+        <div class="envelope" id="envelope" onclick="abrirInvitacion()">
+            <div class="flap"></div>
+            <div class="seal">R & T</div>
+            <div id="texto-sobre-contenedor">
+                <p
+                    style="font-size: 11px; letter-spacing: 3px; font-weight: 600; text-transform: uppercase; text-align: center;">
+                    Una celebración de amor</p>
+                <div class="texto-abrir">TOCA PARA ABRIR</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div>
+            <p class="subtitle">Hay momentos en la vida que son inolvidables, y compartirlos con quienes más amamos los
+                hace eternos. Hoy unimos nuestras vidas para siempre y queremos que seas parte de este gran comienzo.
+            </p>
+            <h1 id="titulo-animado">Rocío & Teddy</h1>
+            <div class="main-event">NUESTRO MATRIMONIO</div>
+            <p
+                style="font-size: 22px; font-family: 'Playfair Display'; letter-spacing: 4px; margin-top: 25px; color: var(--dorado-oscuro); font-weight: 600;">
+                19 . DICIEMBRE . 2026</p>
+        </div>
+        <div class="scroll-indicator" onclick="window.scrollBy(0, 700)">
+            <div class="arrow-down"></div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="card" style="background: transparent; border:none; box-shadow:none; padding: 0;">
+            <p class="frase-estilo">
+                "El matrimonio es la promesa de elegirnos todos los días, de caminar juntos de la mano y construir un
+                hogar donde el amor sea siempre nuestro refugio." </p>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Faltan</h2>
+        <div class="countdown">
+            <div><span id="dias">0</span>Días</div>
+            <div><span id="horas">0</span>Horas</div>
+            <div><span id="minutos">0</span>Min</div>
+            <div><span id="segundos">0</span>Seg</div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Save the Date</h2>
+
+        <div class="calendar-box">
+            <h3 style="font-family: 'Great Vibes'; font-size: 36px; margin-bottom: 20px; color: var(--dorado-oscuro);">
+                Diciembre 2026
+            </h3>
+
+            <div class="calendar-grid">
+
+                <span class="header-day">L</span>
+                <span class="header-day">M</span>
+                <span class="header-day">M</span>
+                <span class="header-day">J</span>
+                <span class="header-day">V</span>
+                <span class="header-day">S</span>
+                <span class="header-day">D</span>
+
+                <!-- 1 de diciembre de 2026 = MARTES -->
+                <span></span>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+                <span>11</span>
+                <span>12</span>
+                <span>13</span>
+
+                <span>14</span>
+                <span>15</span>
+                <span>16</span>
+                <span>17</span>
+                <span>18</span>
+                <span class="corazon-dia">19</span>
+                <span>20</span>
+
+                <span>21</span>
+                <span>22</span>
+                <span>23</span>
+                <span>24</span>
+                <span>25</span>
+                <span>26</span>
+                <span>27</span>
+
+                <span>28</span>
+                <span>29</span>
+                <span>30</span>
+                <span>31</span>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: var(--dorado-oscuro); font-family: 'Playfair Display';">⛪
+                    Ceremonia</h3>
+
+                <p class="frase-estilo" style="font-size: 16px; margin-bottom: 5px;">Iglesia Católica Sagrado Corazón de
+                    Jesús</p>
+                <p class="frase-estilo" style="font-size: 16px; margin-bottom: 5px;">Comuna La Entrada, Santa Elena,
+                    Ecuador</p>
+                <p
+                    style="font-size: 24px; margin: 10px 0; color: #333; font-family: 'Playfair Display'; font-weight: 700;">
+                    13:30 PM</p>
+                <button class="btn" onclick="window.open('https://maps.app.goo.gl/DvTGvjCuQDJJNiFD8')">Ver
+                    ubicación</button>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: var(--dorado-oscuro); font-family: 'Playfair Display';">🥂
+                    Recepción</h3>
+                <p class="frase-estilo" style="font-size: 16px; margin-bottom: 5px;">Casa Arena</p>
+                <p class="frase-estilo" style="font-size: 16px; margin-bottom: 5px;">Montañita, Santa Elena, Ecuador</p>
+                <p
+                    style="font-size: 24px; margin: 10px 0; color: #333; font-family: 'Playfair Display'; font-weight: 700;">
+                    16:00 PM</p>
+                <button class="btn" onclick="window.open('https://maps.app.goo.gl/Y6VvqxGB6XBeDUhU8')">Ver
+                    ubicación</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Itinerario</h2>
+        <div class="card">
+            <div class="timeline">
+                <div><b>13:30 PM</b> Ceremonia Religiosa</div>
+                <div><b>15:00 PM</b> Sesión de Fotos</div>
+                <div><b>16:00 PM</b> Recepción</div>
+                <div><b>16:45 PM</b> Brindis &amp; Comida</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Dress Code</h2>
+        <div class="card" style="max-width:550px; margin: auto;">
+            <h3 style="color: var(--dorado-oscuro); margin-bottom: 20px; font-family: 'Playfair Display';">
+                Playero / Elegante
+            </h3>
+
+            <p class="frase-estilo" style="font-size: 16px;">
+                Te invitamos a vestir con un estilo fresco, elegante y acorde a nuestra celebración junto al mar.<br>
+                <span
+                    style="font-family: 'Montserrat'; font-style: normal; font-size: 12px; letter-spacing: 1px; color: #444;">
+                    <strong>IMPORTANTE:</strong> Nos reservamos los tonos azules y celestes.
+                    Los tonos blancos y perla están reservados exclusivamente para los novios y la corte de honor.
+                </span>
+            </p>
+
+            <!-- Paleta de colores a evitar -->
+            <div style="margin-top: 25px;">
+                <p
+                    style="font-family: 'Montserrat'; font-size: 12px; letter-spacing: 1px; color: #555; margin-bottom: 15px;">
+                    <strong>TONOS A EVITAR</strong>
+                </p>
+
+                <div style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
+
+                    <div style="text-align: center;">
+                        <span
+                            style="width: 36px; height: 36px; background: #DCEEFF; border-radius: 50%; display: block; margin: auto; border: 1px solid #ccc;"></span>
+                        <small
+                            style="font-family: 'Montserrat'; font-size: 10px; color: #555; display: block; margin-top: 6px;">
+                            Celeste
+                        </small>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <span
+                            style="width: 36px; height: 36px; background: #A9D6F5; border-radius: 50%; display: block; margin: auto; border: 1px solid #ccc;"></span>
+                        <small
+                            style="font-family: 'Montserrat'; font-size: 10px; color: #555; display: block; margin-top: 6px;">
+                            Azul claro
+                        </small>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <span
+                            style="width: 36px; height: 36px; background: #6FAED9; border-radius: 50%; display: block; margin: auto; border: 1px solid #ccc;"></span>
+                        <small
+                            style="font-family: 'Montserrat'; font-size: 10px; color: #555; display: block; margin-top: 6px;">
+                            Azul
+                        </small>
+                    </div>
+
+                 
+
+                    <div style="text-align: center;">
+                        <span
+                            style="width: 36px; height: 36px; background: #FFFFFF; border-radius: 50%; display: block; margin: auto; border: 1px solid #ccc;"></span>
+                        <small
+                            style="font-family: 'Montserrat'; font-size: 10px; color: #555; display: block; margin-top: 6px;">
+                            Blanco
+                        </small>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <span
+                            style="width: 36px; height: 36px; background: #F5F0E6; border-radius: 50%; display: block; margin: auto; border: 1px solid #ccc;"></span>
+                        <small
+                            style="font-family: 'Montserrat'; font-size: 10px; color: #555; display: block; margin-top: 6px;">
+                            Perla
+                        </small>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="frase-estilo"
+                style="font-size: 14px; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(184, 134, 11, 0.2);">
+                ¡Gracias por acompañarnos y ser parte de este día tan especial!
+            </p>
+        </div>
+
+
+    </section>
+
+
+    <section class="container">
+        <h2>Nuestros Momentos</h2>
+        <div class="card">
+            <p class="frase-estilo">
+                “Ayúdanos a capturar la magia de este día. <br>
+                Comparte tus fotos y videos con nosotros.”
+            </p>
+            <a href="https://drive.google.com/drive/folders/132SC2wdxAa047RbuwKFTLZXPK-XBFnUq?usp=sharing"
+                target="_blank" class="btn">
+                📸 SUBIR MIS FOTOS
+            </a>
+        </div>
+    </section>
+      <section class="container">
+        <h2> PLAYLIST</h2>
+        <div class="card">
+            <p class="frase-estilo">
+                  ¿Qué canción no puede faltar este día?
+            </p>
+            <a href="ttps://www.youtube.com/playlist?list=PLDNbTKbPpyqU&jct=BSC3Mu7NatgBfrty29RgSg"
+                target="_blank" class="btn">
+                  ▶ SUGERIR CANCIÓN
+            </a>
+        </div>
+    </section>
+  
+
+
+  <section class="container">
+        <h2>Regalos</h2>
+          <div class="card" style="max-width:500px; margin: auto;">
+             <div style="text-align: center; margin-top: 20px; margin-bottom: 15px;">
+            <img src="birds-envelope-Bk5mKFZI.png" alt="Regalos Boda" style="width: 90px; height: auto; border-radius: 8px;">
+        </div>
+     
+            <p class="frase-estilo" style="font-size: 15px;">
+                "Tu presencia es el mejor regalo que nos puedes dar en este día, pero si quieres tener un detalle con
+                nosotros y contribuir al comienzo de nuestra nueva historia, será bienvenido:"
+            </p>
+            
+            <p style="letter-spacing: 2px; font-weight: 600; font-size: 13px;"> Cta. Ahorros Banco Guayaquil</p>
+            <p style="letter-spacing: 2px; font-weight: 600; font-size: 13px;">Nro. Cuenta: 0054206806</p>
+            <p style="letter-spacing: 2px; font-weight: 600; font-size: 13px;">Cédula: 0931342869</p>
+            <p style="letter-spacing: 2px; font-weight: 600; font-size: 13px;">Titular: Rocío Esperanza Luces Tejada</p>
+
+        </div>
+    </section>
+
+
+
+<section class="container" style="padding-bottom: 100px;">
+        <h2>Confirmación</h2>
+        <p class="frase-estilo" style="font-size: 15px;">
+            Por favor confirmar su asistencia llenando el siguiente formulario:
+        </p>
+        
+        <!-- Botón que redirige al Google Form -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScVO6ONoA6QYIcBf_LX5giVOh8MUiXUB2e7rSEYrdZISSK8-A/viewform?usp=publish-editor" 
+           target="_blank" 
+           class="btn" 
+           style="display: inline-block; text-decoration: none; text-align: center; line-height: normal;">
+           Confirmar Asistencia
+        </a>
+        
+        <br><br><br><br>
+        <div style="margin-top: 50px;">
+            <p class="frase-estilo"
+                style="font-size: 15px; text-transform: uppercase; font-style: normal; font-weight: 600; letter-spacing: 1px;">
+                "Hay momentos en la vida que son muy especiales por sí solos, pero al compartirlos con personas tan
+                especiales como tú, se convierten en momentos imposibles de olvidar."
+            </p>
+        </div>
+        <div style="margin-top: 40px;">
+            <p
+                style="font-family: 'Great Vibes'; font-size: clamp(50px, 10vw, 70px); color: #b8965b; margin-bottom: 0;">
+                Te esperamos
+            </p>
+            <p style="font-weight: 600; font-size: 13px; letter-spacing: 4px; color: #888; text-transform: uppercase;">
+                Rocío & Teddy
+            </p>
+            <div class="foto-pareja"></div>
+        </div>
+    </section>
+
+    <footer>
+        Invitación digital • Rocío & Teddy • 2026<br>
+        Creado por PÁGINAS WEB LOJA • contacto: 0960934663
+    </footer>
+
+    <div class="music-btn" id="musicBtn" onclick="toggleMusica()">🎵</div>
+
+    <audio id="miAudio" loop>
+        <source src="audio/mi_musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const audio = document.getElementById("miAudio");
+        const musicBtn = document.getElementById("musicBtn");
+
+        function segmentarTexto(idElemento) {
+            const elemento = document.getElementById(idElemento);
+            if (!elemento) return;
+            const texto = elemento.innerText;
+            elemento.innerHTML = "";
+            [...texto].forEach((letra, i) => {
+                const span = document.createElement("span");
+                span.innerHTML = letra === " " ? "&nbsp;" : letra;
+                span.classList.add("letra");
+                span.classList.add(`grupo-${idElemento}`);
+                span.style.transitionDelay = `${i * 0.04}s`;
+                elemento.appendChild(span);
+            });
+        }
+
+        let lastMove = 0;
+        function manejarDestellos(x, y) {
+            const ahora = Date.now();
+            if (ahora - lastMove < 30) return;
+            lastMove = ahora;
+            for (let i = 0; i < 2; i++) crearPepitaOro(x, y);
+        }
+
+        function crearPepitaOro(x, y) {
+            const sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+            const size = Math.random() * 6 + 3;
+            sparkle.style.width = size + "px"; sparkle.style.height = size + "px";
+            sparkle.style.left = x + "px"; sparkle.style.top = y + "px";
+            document.body.appendChild(sparkle);
+            const duracion = Math.random() * 600 + 600;
+            sparkle.animate([
+                { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                { transform: `translate(${(Math.random() - 0.5) * 80}px, ${(Math.random() - 0.5) * 80}px) scale(0)`, opacity: 0 }
+            ], { duration: duracion, easing: 'ease-out', fill: 'forwards' });
+            setTimeout(() => sparkle.remove(), duracion + 100);
+        }
+
+        function abrirInvitacion() {
+            audio.play().then(() => musicBtn.classList.add("music-playing")).catch(() => { });
+            document.getElementById("envelope").classList.add("open");
+
+            setTimeout(() => {
+                const contenedor = document.getElementById("sobre-contenedor");
+                contenedor.style.opacity = "0";
+                contenedor.style.transform = "translateY(-100%)";
+
+                setTimeout(() => {
+                    contenedor.style.display = "none";
+                    document.querySelectorAll(".grupo-titulo-animado").forEach(l => l.classList.add("animada"));
+                    document.querySelectorAll(".container").forEach((c, index) => {
+                        setTimeout(() => { c.classList.add("visible"); }, index * 300);
+                    });
+                }, 800);
+            }, 800);
+        }
+
+        const fechaBoda = new Date("Dec 19, 2026 13:30:00").getTime();
+        function updateCountdown() {
+            const d = fechaBoda - new Date().getTime();
+            if (d > 0) {
+                document.getElementById("dias").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
+                document.getElementById("horas").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutos").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("segundos").innerText = Math.floor((d % (1000 * 60)) / 1000);
+            }
+        }
+
+        function crearPetalo() {
+            const p = document.createElement("div");
+            p.classList.add("petalo");
+            p.innerText = "🤍";
+            p.style.left = Math.random() * 100 + "vw";
+            const duracion = Math.random() * 3 + 4;
+            p.style.animationDuration = duracion + "s";
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), duracion * 1000);
+        }
+
+        window.onload = () => {
+            segmentarTexto("titulo-animado");
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            setInterval(crearPetalo, 800);
+        };
+
+        document.addEventListener('mousemove', (e) => manejarDestellos(e.clientX, e.clientY));
+        document.addEventListener('touchstart', (e) => manejarDestellos(e.touches[0].clientX, e.touches[0].clientY));
+
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll(".container").forEach(s => obs.observe(s));
+
+        function confirmar() { window.open(`https://wa.me/593939784110?text=¡Confirmamos nuestra asistencia!%20Nombres:`); }
+        function toggleMusica() { audio.paused ? audio.play() : audio.pause(); }
+        function activarFormularioPlaylist() {
+            // Agrega la clase que activa las animaciones CSS
+            const tarjeta = document.getElementById('tarjetaPlaylist');
+            tarjeta.classList.add('show-form');
+
+            // Después de que la animación de salida termina, ocultamos el paso 1 por completo
+            setTimeout(() => {
+                document.getElementById('playlist-paso1').style.display = 'none';
+            }, 400); // 400ms es la duración de la transición en el CSS
+        }
+
+        function enviarSugerenciaAWhatsApp() {
+            const cancion = document.getElementById("nombreCancionInput").value;
+            const artista = document.getElementById("artistaCancionInput").value;
+
+            if (!cancion || !artista) {
+                alert("Por favor, completa ambos campos (Canción y Artista) antes de enviar.");
+                return;
+            }
+
+            // Mismo número de confirmación que ya tienes
+            const telefonoWhatsApp = "593939784110";
+
+            // Texto pre-armado con formato
+            const textoMensaje = `¡Hola! Queremos sugerir esta canción para la fiesta: %0A%0A🎵 *Canción:* ${cancion} %0A🎤 *Artista:* ${artista}`;
+
+            // Abre WhatsApp en una nueva pestaña
+            window.open(`https://wa.me/${telefonoWhatsApp}?text=${textoMensaje}`, '_blank');
+        }
+
+    </script>
+</body>
+
+</html>
