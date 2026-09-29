@@ -712,6 +712,37 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+/* --- COUNTDOWN --- */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 8px; /* Reducimos ligeramente el espacio entre cajas */
+            width: 100%;
+            max-width: 400px; /* Limita el ancho máximo para que no se expanda de más */
+            margin: 0 auto; /* Lo centra perfectamente */
+            padding: 0 10px; /* Margen de seguridad para que no toque los filos del celular */
+            box-sizing: border-box;
+        }
+
+        .countdown div {
+            background: var(--blanco-puro);
+            flex: 1;
+            min-width: 0; /* Permite que las cajas se reduzcan si la pantalla es muy pequeña */
+            padding: 12px 2px; /* Ajustamos el relleno interno */
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .countdown span {
+            font-size: clamp(18px, 5vw, 24px); /* Tamaño adaptable para que los números no rompan la caja */
+            font-family: 'Playfair Display';
+            color: var(--dorado-oscuro);
+            display: block;
+            font-weight: 700;
+        }
     </style>
 </head>
 
