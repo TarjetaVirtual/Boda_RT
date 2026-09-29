@@ -504,22 +504,6 @@
             margin-bottom: 10px;
         }
 
-        .corazon-dia {
-            color: white !important;
-            font-weight: bold;
-            z-index: 2;
-        }
-
-        .corazon-dia::after {
-            content: "❤";
-            position: absolute;
-            font-size: 38px;
-            color: #D4AF37;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-        }
 
         /* --- BOTONES --- */
         .btn {
@@ -736,6 +720,36 @@
             display: block;
             font-weight: 700;
         }
+        .dia-corazon {
+    width: 14.28%;
+    height: 35px;
+    position: relative;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.corazon-svg {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    display: block;
+}
+
+.numero-corazon {
+    position: relative;
+    z-index: 2;
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+}
     </style>
 </head>
 
@@ -828,7 +842,20 @@
                 <span>16</span>
                 <span>17</span>
                 <span>18</span>
-                <span class="corazon-dia">19</span>
+             <span class="dia-corazon">
+    <svg class="corazon-svg" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M50 88
+                 C45 83 15 60 8 40
+                 C1 20 13 8 28 8
+                 C38 8 46 14 50 24
+                 C54 14 62 8 72 8
+                 C87 8 99 20 92 40
+                 C85 60 55 83 50 88Z"
+              fill="#D4AF37"/>
+    </svg>
+
+    <span class="numero-corazon">19</span>
+</span>
                 <span>20</span>
 
                 <span>21</span>
